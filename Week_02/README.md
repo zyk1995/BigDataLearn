@@ -5,7 +5,7 @@ $ hdfs dfs -put HTTP_20130313143750.dat /user/jonas/
 # 检查文件
 $ hdfs dfs -ls /user/jonas
 Found 1 items
--rw-r-----   2 student5 hadoop       2229 2022-03-12 15:38 /user/jonas/HTTP_20130313143750.dat
+-rw-r--[[]---   2 student5 hadoop       2229 2022-03-12 15:38 /user/jonas/HTTP_20130313143750.dat
 # 清除前次作业输出
 $ hdfs dfs -rm -r /user/jonas/output
 $ rm -rf output
