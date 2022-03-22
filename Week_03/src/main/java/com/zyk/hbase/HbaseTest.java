@@ -15,12 +15,14 @@ public class HbaseTest {
         Configuration configuration = HBaseConfiguration.create();
         configuration.set("hbase.zookeeper.quorum", "127.0.0.1");
         configuration.set("hbase.zookeeper.property.clientPort", "2181");
-        configuration.set("hbase.master", "127.0.0.1:16000");
+        configuration.set("hbase.master", "127.0.0.1:55012");
         Connection conn = ConnectionFactory.createConnection(configuration);
         Admin admin = conn.getAdmin();
 
         TableName tableName = TableName.valueOf("zhangyikun:student");
-        String colFamily = "Student";
+        String colFamilyInfo = "info";
+        String colFamilyScore = "score";
+
         int rowKey = 1;
 
         // 建表
@@ -28,16 +30,17 @@ public class HbaseTest {
             System.out.println("Table already exists");
         } else {
             HTableDescriptor hTableDescriptor = new HTableDescriptor(tableName);
-            HColumnDescriptor hColumnDescriptor = new HColumnDescriptor(colFamily);
+            HColumnDescriptor hColumnDescriptor = new HColumnDescriptor(colFamilyInfo);
             hTableDescriptor.addFamily(hColumnDescriptor);
+
             admin.createTable(hTableDescriptor);
             System.out.println("Table create successful");
         }
 
         // 插入数据
         Put put = new Put(Bytes.toBytes(rowKey)); // row key
-        put.addColumn(Bytes.toBytes(colFamily), Bytes.toBytes("uid"), Bytes.toBytes(001)); // col1
-        put.addColumn(Bytes.toBytes(colFamily), Bytes.toBytes("name"), Bytes.toBytes("Tom")); // col2
+        put.addColumn(Bytes.toBytes(colFamilyInfo), Bytes.toBytes("uid"), Bytes.toBytes(001)); // col1
+        put.addColumn(Bytes.toBytes(colFamilyInfo), Bytes.toBytes("name"), Bytes.toBytes("Tom")); // col2
         conn.getTable(tableName).put(put);
         System.out.println("Data insert success");
 
