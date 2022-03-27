@@ -11,7 +11,7 @@ import java.io.IOException;
 public class HbaseTest {
 
     /*
-     * docker run -d  -p 2181:2181 -p 16000:16000 -p 16010:16010 -p 16201:16201 -p 16301:16301 -p 8080:8080 -p 8085:8085 -p 9090:9090 -p:9095:9095 -p 16020:16020 --name hbase001 harisekhon/hbase /bin/sh
+     * docker run -d  -p 2181:2181 -p 16000:16000 -p 16010:16010 -p 16201:16201 -p 16301:16301 -p 8080:8080 -p 8085:8085 -p 9090:9090 -p:9095:9095 -p 16020:16020 --name hbase001 harisekhon/hbase
      */
     public static void main(String[] args) throws IOException {
         // 建立连接
